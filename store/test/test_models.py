@@ -45,12 +45,12 @@ class TestProductModel(TestCase):
         )
         self.data1 = Product.objects.create(
             category_id=1, title='django advanced', created_by_id=1,
-            slug='djano-advanced', price='20.00', image='django', is_active=False
+            slug='django-advanced', price='20.00', image='django', is_active=False
         )
 
     def test_product_model_entry(self):
         """
-            Test product model data insertion/types/field attributes
+        Test product model data insertion/types/field attributes
         """
         data = self.data
         self.assertTrue(isinstance(data, Product))
@@ -58,11 +58,11 @@ class TestProductModel(TestCase):
 
     def test_products_url(self):
         """
-            Test product model slug and URL reverse
+        Test product model slug and URL reverse
         """
-        data = self.data1
+        data = self.data
         url = reverse('store:product_detail', args=[data.slug])
-        self.assertEqual(url, 'product/django-beginners/')
+        self.assertEqual(url, '/product/django-beginners/')
         response = self.client.post(
             reverse('store:product_detail', args=[data.slug])
         )
